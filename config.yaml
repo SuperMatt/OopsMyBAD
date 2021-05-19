@@ -1,0 +1,19 @@
+name: banana
+pagerduty:
+  apikey: f39d5df1e8564d0ec07dc0cc5e21a332
+interval: 60
+disks:
+  - path: /
+    threshold: 80
+    for: 3600
+load:
+  threshold: 2
+  for: 300
+memory:
+  threshold: 80
+  for: 300
+services:
+  services:
+    - lighttpd
+    - pihole-FTL
+  for: 300
