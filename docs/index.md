@@ -1,37 +1,18 @@
-## Welcome to GitHub Pages
+## Welcome to OopsMyBad
 
-You can use the [editor on GitHub](https://github.com/SuperMatt/OopsMyBAD/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+`OopsMyBAD` is a collection of tools used for very opinionated alerting. `Oops` stands for **Ok or panic system** and `MyBAD` means **My Basic Alerting Daemon**.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Core Principal
+The core principal of these tools is to provide a monitoring system which requires very little configuration. There are many wonderful tools out there for monitoring complex systems, but this will suffice for servers that have very simple functionality.
 
-### Markdown
+### Oops
+`Oops` is a comand wrapper which fires a PagerDuty event, triggering a new incident, when a command exits with a non-zero status. If the command is ever run again and exits with a successful status, it will also resolve the incident.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+All it needs is a config file written in Yaml with the PagerDuty Integration Key to run. See the README.md file for more information.
 
-```markdown
-Syntax highlighted code block
+The core usecase is to provide alerts for cronjobs/systed timers without relying on emails.
 
-# Header 1
-## Header 2
-### Header 3
+### MyBAD
+`MyBAD` is a long running daemon for monitoring basic parts of your system. The tool is extremely opinionated. It allows you to monitor load, running services, memory and disk usage.
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/SuperMatt/OopsMyBAD/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+`MyBAD` is configured with a simple Yaml file, which can be built upon the `Oops` config file.
