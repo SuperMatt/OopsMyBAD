@@ -5,6 +5,6 @@ import (
 	_ "github.com/SuperMatt/OopsMyBAD/pd"
 )
 
-func doNothing {
+func doNothing() {
 	fmt.Println("doing nothing")
 }
