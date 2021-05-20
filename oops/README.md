@@ -1,4 +1,4 @@
-# Oops - Ok or panic system
+# Oops - Ok or page system
 Oops is a command wrapper which triggers a PagerDutyV2 integration event if it exits with a non-zero status, creating an incident. If the same command is run again and exists successfully, it resolves the original incident.
 
 ## Usage

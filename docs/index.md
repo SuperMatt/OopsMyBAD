@@ -1,6 +1,6 @@
 ## Welcome to OopsMyBad
 
-`OopsMyBAD` is a collection of tools used for very opinionated alerting. `Oops` stands for **Ok or panic system** and `MyBAD` means **My Basic Alerting Daemon**.
+`OopsMyBAD` is a collection of tools used for very opinionated alerting. `Oops` stands for **Ok or page system** and `MyBAD` means **My Basic Alerting Daemon**.
 
 ### Core Principal
 The core principal of these tools is to provide a monitoring system which requires very little configuration. There are many wonderful tools out there for monitoring complex systems, but this will suffice for servers that have very simple functionality.
