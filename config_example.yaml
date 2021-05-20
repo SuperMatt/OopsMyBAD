@@ -14,6 +14,5 @@ memory:
   for: 300
 services:
   services:
-    - lighttpd
-    - pihole-FTL
+    - nginx
   for: 300

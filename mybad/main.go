@@ -26,7 +26,7 @@ func (a *App) doTheThing() {
 }
 
 func main() {
-	config := flag.String("config", "config.yaml", "config file")
+	config := flag.String("config", "/usr/local/etc/OopsMyBAD/config.yaml", "config file")
 	flag.Parse()
 
 	a := NewApp(config)

@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	configFile := flag.String("config", "config.yaml", "config file")
+	configFile := flag.String("config", "/usr/local/etc/OopsMyBAD/config.yaml", "config file")
 	flag.Parse()
 
 	c := config.NewConfig(configFile)

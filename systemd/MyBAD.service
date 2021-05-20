@@ -1,0 +1,10 @@
+[Unit]
+Description=MyBAD long running service
+
+[Service]
+User=nobody
+Type=simple
+ExecStart=/usr/local/bin/mybad
+
+[Install]
+WantedBy=multi-user.target
