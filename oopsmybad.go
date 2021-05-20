@@ -1,6 +1,6 @@
 package OopsMyBAD
 
-include(
+import (
 	_ "github.com/SuperMatt/OopsMyBAD/config"
 	_ "github.com/SuperMatt/OopsMyBAD/pd"
 )
