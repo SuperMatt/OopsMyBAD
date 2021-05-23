@@ -10,6 +10,8 @@ import (
 func Event(apiKey, action, name, message, source string) (*pagerduty.V2EventResponse, error) {
 	//This is where I'm going to trigger the alert!
 
+	dedupKey := base64.StdEncoding.EncodeToString([]byte(name))
+
 	if message == "" {
 		message = "empty message"
 	}
@@ -17,8 +19,7 @@ func Event(apiKey, action, name, message, source string) (*pagerduty.V2EventResp
 	fmt.Println("Action:", action)
 	fmt.Println("Name:", name)
 	fmt.Println("Message:", message)
-
-	dedupKey := base64.StdEncoding.EncodeToString([]byte(name))
+	fmt.Println("Dedup:", dedupKey)
 
 	e := pagerduty.V2Event{
 		RoutingKey: apiKey,
