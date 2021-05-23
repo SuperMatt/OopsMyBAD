@@ -1,8 +1,10 @@
 package main
 
 import (
+	"bytes"
 	"flag"
 	"fmt"
+	"io"
 	"os"
 	"os/exec"
 	"strings"
@@ -20,14 +22,16 @@ func main() {
 	command := flag.Args()
 
 	cmd := exec.Command(command[0], command[1:]...)
-	out, err := cmd.CombinedOutput()
-	fmt.Print(string(out))
-	message := ""
+	var stdoutBuf, stderrBuf bytes.Buffer
+	cmd.Stdout = io.MultiWriter(os.Stdout, &stdoutBuf)
+	cmd.Stderr = io.MultiWriter(os.Stderr, &stderrBuf)
+	err := cmd.Run()
 	if err != nil {
+		message := ""
 		if err == exec.ErrNotFound {
 			message = err.Error()
 		} else {
-			message = string(out)
+			message = string(stderrBuf.String())
 		}
 
 		_, err := pd.Event(c.PagerDuty.ApiKey, "trigger", strings.Join(command, "_"), message, c.Name)
@@ -35,7 +39,7 @@ func main() {
 			fmt.Println(err.Error())
 		}
 	} else {
-		_, err := pd.Event(c.PagerDuty.ApiKey, "resolve", strings.Join(command, "_"), string(out), c.Name)
+		_, err := pd.Event(c.PagerDuty.ApiKey, "resolve", strings.Join(command, "_"), stdoutBuf.String(), c.Name)
 		if err != nil {
 			fmt.Println(err.Error())
 		}
