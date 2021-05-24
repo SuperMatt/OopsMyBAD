@@ -14,6 +14,8 @@ func Event(apiKey, action, name, message, source string) (*pagerduty.V2EventResp
 
 	if message == "" {
 		message = "empty message"
+	} else if len(message) > 1024 {
+		message = message[0:1000] + "\n ..."
 	}
 	fmt.Println("Sending Alert")
 	fmt.Println("Action:", action)
